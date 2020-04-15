@@ -1,0 +1,40 @@
+{
+    "editor.fontSize": 14,
+    "editor.renderWhitespace": "all",
+    "path-intellisense.mappings": {
+        "@": "${workspaceRoot}/src/operate-tool/src"
+    },
+    "editor.tabSize": 2,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/jspm_packages": true,
+        "**/node_modules": true,
+        "**/.zip": true,
+        "**/.sh": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true
+    },
+    "files.associations": {
+        "*.json": "json",
+        "*.js": "javascript",
+        "*.mjs": "javascriptreact",
+        "*.ts": "typescript",
+        "*.tsx": "typescriptreact",
+    },
+    "[javascript]": {
+    },
+    "[javascriptreact]": {
+    },
+    "[typescript]": {
+    },
+    "[typescriptreact]": {
+    },
+}
