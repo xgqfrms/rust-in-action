@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="xgqfrms">
+    <meta name="generator" content="VS code">
+    <title>WebAssembly</title>
+    <style lang="css">
+      #app {
+        background: #000;
+        color: #fff;
+        margin: 10px;
+        padding: 10px;
+      }
+      #pre{
+        background: #000;
+        color: #0f0;
+        margin: 10px;
+        padding: 10px;
+      }
+    </style>
+</head>
+<body>
+    <header>
+      <h1>WebAssembly demo</h1>
+    </header>
+    <section id="app">
+      loading...
+    </section>
+    <pre id="pre">
+      <!-- wat -->
+;; https://mbebenita.github.io/WasmExplorer/
+
+(module
+    (export "sqrt" (func $sqrt))
+    (func $sqrt
+        (param $num f32)
+        (result f32)
+        ;; (f32.sqrt (get_local $num))
+        (f32.sqrt (local.get $num))
+    )
+)
+    </pre>
+    <footer>
+        <p>copyright&copy; xgqfrms 2022</p>
+    </footer>
+    <script src="./app.js"></script>
+</body>
+</html>
