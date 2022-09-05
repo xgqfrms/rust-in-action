@@ -1,7 +1,11 @@
 [package]
 name = "first_rust_package"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
+# edition = "2022"
+# custom config ✅
+author = "xgqfrms"
+editor = "vscode"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
