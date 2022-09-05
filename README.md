@@ -16,36 +16,23 @@ $ rustc -V
 
 ```
 
+```sh
+$ rustup update
+$ rustup --version
+
+$ rustup -V
+# rustup 1.25.1 (bb60b1e89 2022-07-12)
+# info: This is the version for the rustup toolchain manager, not the rustc compiler.
+# info: The currently active `rustc` version is `rustc 1.63.0 (4b91a6ea7 2022-08-08)`
+
+$ rustc -V
+# rustc 1.63.0 (4b91a6ea7 2022-08-08)
+
+```
+
 https://www.rust-lang.org/tools/install
 
 https://sh.rustup.rs
-
-
-```sh
-$ cd src/hello_world/
-
-$ rustc main.rs
-
-$ ./main
-
-```
-
-
-```sh
-
-$ rustc app.rs
-
-error[E0432]: unresolved import `ferris_says`
- --> app.rs:1:5
-  |
-1 | use ferris_says::say; // from the previous step
-  |     ^^^^^^^^^^^ maybe a missing crate `ferris_says`?
-
-error: aborting due to previous error
-
-For more information about this error, try `rustc --explain E0432`.
-
-```
 
 ## version
 
@@ -109,3 +96,30 @@ Additional help:
     --help -v           Print the full set of options rustc accepts
 
 ```
+
+## demos
+
+```rs
+// main.rs
+
+fn main() {
+  println!("Hello, world!");
+}
+
+```
+
+```sh
+$ cd src/hello_world/
+
+# rust compiler
+$ rustc main.rs
+# -o === output
+$ rustc main.rs -o demo
+# 可执行文件，跨平台
+$ ./main
+
+```
+
+## Rust Playground
+
+https://play.rust-lang.org/
