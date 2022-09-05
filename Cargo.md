@@ -11,7 +11,7 @@ $ cargo new first_rust_package --bin
 # $ cargo new first_rust_package
 
 # --lib
-$ cargo new first_rust_lib --lib
+$ cargo new first_rust_library --lib
 
 ```
 
@@ -24,7 +24,8 @@ $ cargo new first_rust_lib --lib
 name = "package_name"
 # name = "library_name"
 version = "0.0.1"
-edition = "2022"
+edition = "2021"
+# edition = "2022"
 # custom config ✅
 author = "xgqfrms"
 editor = "vscode"
@@ -40,6 +41,8 @@ editor = "vscode"
 
 ## build & run
 
+> rust package ✅
+
 ```sh
 $ cd first_rust_package 
 
@@ -49,6 +52,16 @@ $ cargo build
 # run package
 $ ./target/debug/first_rust_package
 
+
+# 🚀 compile and run
+$ cargo run
+
+```
+
+> rust library ❌
+
+```sh
+$ cd first_rust_library
 
 # 🚀 compile and run
 $ cargo run
