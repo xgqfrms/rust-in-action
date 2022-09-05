@@ -3,10 +3,16 @@ name = "first_rust_package"
 version = "0.0.1"
 edition = "2021"
 # edition = "2022"
+
 # custom config ✅
 author = "xgqfrms"
 editor = "vscode"
+# warning: unused manifest key: package.author
+# warning: unused manifest key: package.editor
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+# rust cowsay
+# all dependencies will be auto imported 🚀
+ferris-says = "0.2.1"

@@ -55,6 +55,44 @@ editor = "vscode"
 
 ```
 
+## crates
+
+> cowsay mascot
+
+https://crates.io/search?q=ferris-says
+
+https://crates.io/crates/ferris-says
+
+```toml
+[dependencies]
+# rust cowsay
+ferris-says = "0.2.1"
+
+```
+
+```rs
+// use the say function that the ferris-says crate exports for us.
+use ferris_says::say;
+
+```
+
+```rs
+// import the crate ferris_says ❌ no need anymore ✅
+// extern crate ferris_says;
+
+use ferris_says::say;
+use std::io::{ stdout, BufWriter };
+
+fn main() {
+    let out = b"Hello fellow Rustaceans!";
+    let width = 24;
+    let mut writer = BufWriter::new(stdout());
+    say(out, width, &mut writer).unwrap();
+}
+
+```
+
+
 
 ## build & run
 
