@@ -1,3 +1,4 @@
+;; author xgqfrms, 2022.09.01
 ;; 编译器
 
 ;; C/C++ => WASM (.c/.cpp => .wasm)
@@ -22,7 +23,9 @@
     (func $sqrt
         (param $num f32)
         (result f32)
+        ;; get_local ❌ WebAssembly draft
         ;; (f32.sqrt (get_local $num))
+        ;; local.get ✅ WebAssembly Specification
         (f32.sqrt (local.get $num))
     )
 )
