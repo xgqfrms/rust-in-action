@@ -122,3 +122,20 @@ $ cd first_rust_library
 $ cargo run
 # error: a bin target must be available for `cargo run` ❌
 ```
+
+## cargo & `Cargo.toml`
+
+> cargo run 入口文件 `src/lib.rs` 或 `src/lib.rs`
+
+```sh
+$ cargo run main.rs
+error: could not find `Cargo.toml` in `/Users/xgqfrms-mbp/Documents/GitHub/rust-in-action/src/hello_world` or any parent directory
+
+$ ✗ cargo run main.rs
+error: failed to parse manifest at `/Users/xgqfrms-mbp/Documents/GitHub/rust-in-action/src/hello_world/Cargo.toml`
+
+Caused by:
+  no targets specified in the manifest
+  either `src/lib.rs`, `src/main.rs`, a [lib] section, or [[bin]] section must be presen
+
+```
