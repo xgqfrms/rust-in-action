@@ -59,6 +59,8 @@ $ rustup target list | grep wasm
 
 ## wasmer 虚拟机
 
+> Wasmer runtime
+
 ```sh
 $ curl https://get.wasmer.io -sSfL | sh
 # https://github.com/wasmerio/wasmer/releases/download/2.3.0/wasmer-darwin-amd64.tar.gz
@@ -68,6 +70,36 @@ $ wasmer -h
 
 ```
 
+> wasmer `环境变量`配置
+
+```sh
+# open & edit config
+$ code .zshrc
+
+$ vim .zshrc
+.zshrc
+```
+
+```code
+# WebAssembly & Rust
+# /Users/xgqfrms-mbp/.wasmer/bin
+export PATH="$PATH:/Users/xgqfrms-mbp/.wasmer/bin:$PATH"
+
+```
+
+```sh
+# update
+$ source ~/.zshrc
+
+```
+
+https://wasmer.io/
+
+https://www.cnblogs.com/xgqfrms/p/16683271.html
+
+## WAPM
+
+> WebAssembly Package Manager
 
 ```sh
 # install package
@@ -77,7 +109,10 @@ $ wapm run cowsay Hello World 2022!
 
 ```
 
-https://wasmer.io/
+WebAssembly apps and libraries
+
+https://wapm.io/
+
 
 
 ## VSCode
