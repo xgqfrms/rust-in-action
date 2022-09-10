@@ -23,7 +23,7 @@
     (func $sqrt
         (param $num f32)
         (result f32)
-        ;; get_local ❌ WebAssembly draft
+        ;; get_local ❌ WebAssembly Draft
         ;; (f32.sqrt (get_local $num))
         ;; local.get ✅ WebAssembly Specification
         (f32.sqrt (local.get $num))

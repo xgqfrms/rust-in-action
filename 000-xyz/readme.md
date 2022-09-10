@@ -93,9 +93,66 @@ $ source ~/.zshrc
 
 ```
 
+
+```sh
+
+$ wasmer -V
+# wasmer 2.3.0
+
+$ wasmer -h
+wasmer 2.3.0
+Wasmer Engineering Team <engineering@wasmer.io>
+WebAssembly standalone runtime.
+
+USAGE:
+    wasmer <SUBCOMMAND>
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    cache          Wasmer cache
+    compile        Compile a WebAssembly binary
+    config         Get various configuration information needed to compile programs which use Wasmer
+    create-exe     Compile a WebAssembly binary into a native executable
+    help           Prints this message or the help of the given subcommand(s)
+    inspect        Inspect a WebAssembly file
+    run            Run a WebAssembly file. Formats accepted: wasm, wat
+    self-update    Update wasmer to the latest version
+    validate       Validate a WebAssembly binary
+    wast           Run spec testsuite
+
+```
+
+
+
 https://wasmer.io/
 
 https://www.cnblogs.com/xgqfrms/p/16683271.html
+
+
+```sh
+$ cargo new wasmer_demo
+# Created binary (application) `wasmer_demo` package
+
+$ cd wasmer_demo 
+
+$ cargo run wasmer_demo
+
+# 生成 WebAssembly
+$ cargo build --target=wasm32-wasi
+
+# 运行 Rust
+# $ cargo run
+# $ cargo run hello_world_package
+
+# 运行 WebAssembly
+$ wasmer run target/wasm32-wasi/debug/wasmer_demo.wasm
+# hello world 🦀
+
+```
+
 
 ## WAPM
 
