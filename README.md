@@ -34,6 +34,25 @@ https://www.rust-lang.org/tools/install
 
 https://sh.rustup.rs
 
+
+## rust docs
+
+```sh
+# local rust docs
+$ rustup doc
+
+```
+
+Rust Documentation
+
+`file:///Users/xgqfrms-mbp/.rustup/toolchains/stable-x86_64-apple-darwin/share/doc/rust/html/index.html`
+
+The Rust Programming Language
+
+`file:///Users/xgqfrms-mbp/.rustup/toolchains/stable-x86_64-apple-darwin/share/doc/rust/html/book/index.html`
+
+
+
 ## version
 
 ```sh
