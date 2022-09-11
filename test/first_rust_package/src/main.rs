@@ -1,3 +1,5 @@
+// # 配置后，无需再次手动导入外部包 external crate
+
 // if declared `ferris_says` as dependencies in `Cargo.toml` file
 // it's no need import external crate `ferris_says` anymore ✅
 // extern crate ferris_says;

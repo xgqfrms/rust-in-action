@@ -14,5 +14,6 @@ editor = "vscode"
 
 [dependencies]
 # rust cowsay
+# 配置后，无需再次手动导入外部包 external crate
 # all dependencies will be auto imported 🚀
 ferris-says = "0.2.1"

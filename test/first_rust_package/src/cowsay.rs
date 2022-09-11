@@ -1,5 +1,5 @@
+// # 配置后，无需再次手动导入外部包 external crate
 
-// import the crate ferris_says ???
 // extern crate ferris_says;
 
 // test
