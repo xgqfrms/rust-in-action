@@ -1,39 +1,54 @@
-// ✅ Cargo.toml 中 dependencies 配置后，无需再次手动导入外部包 external crate
-
-// 导入外部包 external crate
-// extern crate wasm_bindgen;
-
 // 引入 wasm_bindgen::prelude 的全部模块 *
 use wasm_bindgen::prelude::*;
 
 // 使用 wasm-bindgen 在 Rust 与 JavaScript 之间通信
 
-/*
-
-wasm-pack 使用另一个工具 wasm-bindgen 来提供 JavaScript 和 Rust 类型之间的桥梁。
-它允许 JavaScript 使用字符串调用 Rust API，或调用 Rust 函数来捕获 JavaScript 异常。
-
-*/
-
-// 从 Rust 调用 JavaScript 中的外部函数
-// #[] => 属性, 修改下一条语句 extern; 即，告诉 rust 调用一些外部定义的函数, wasm-bindgen 知道如何找到这些函数
+// js_namespace = console, js_name = log
 // #[wasm_bindgen]
-// extern {
-//   // 函数签名 (参数名：参数类型)
-//   // pub fn alert(s: &str);
-//   // let console_log = console.log;
-//   // pub fn console_log(s: &str);
-//   // pub fn console.log(s: &str);
-//   pub fn console(s: &str);
+// extern "C" {
+//   // Use `js_namespace` here to bind `console.log(..)` instead of just `log(..)`
+//   #[wasm_bindgen(js_namespace = console)]
+//   fn log(s: &str);
+//   // fn console_log(s: &str);
+//   // Uncaught (in promise) TypeError: `console.console_log` is not a function  ❌
+
+//   // The `console.log` is quite polymorphic, so we can bind it with multiple signatures.
+//   // Note that we need to use `js_name` to ensure we always call `log` in JS.
+//   #[wasm_bindgen(js_namespace = console, js_name = log)]
+//   fn log_u32(a: u32);
+
+//   // Multiple arguments too!
+//   #[wasm_bindgen(js_namespace = console, js_name = log)]
+//   fn log_strs(a: &str, b: &str);
 // }
 
 
-// js_namespace = console, js_name = log
+// #[wasm_bindgen]
+// extern "C" {
+//   // Use `js_namespace` here to bind `console.log(..)` instead of just `log(..)`
+//   // 自定义 js name ❓ js_name `console_log` 不是 js 中真实存在的 ❌
+//   #[wasm_bindgen(js_namespace = console, js_name = console_log)]
+//   // fn log(s: &str);
+//   fn console_log(s: &str);
+//   // rust_to_wasm_npm.js:138 Uncaught (in promise) TypeError: `console.console_log` is not a function ❌
+
+//   // The `console.log` is quite polymorphic, so we can bind it with multiple signatures.
+//   // Note that we need to use `js_name` to ensure we always call `log` in JS.
+//   #[wasm_bindgen(js_namespace = console, js_name = log)]
+//   fn log_u32(a: u32);
+
+//   // Multiple arguments too!
+//   #[wasm_bindgen(js_namespace = console, js_name = log)]
+//   fn log_strs(a: &str, b: &str);
+// }
+
 #[wasm_bindgen]
 extern "C" {
   // Use `js_namespace` here to bind `console.log(..)` instead of just `log(..)`
-  #[wasm_bindgen(js_namespace = console)]
-  fn log(s: &str);
+  // 自定义 js name ✅ js_namespace 和 js_name 必须是 js 中真实存在的 ✅
+  #[wasm_bindgen(js_namespace = console, js_name = log)]
+  // fn log(s: &str);
+  fn console_log(s: &str);
 
   // The `console.log` is quite polymorphic, so we can bind it with multiple signatures.
   // Note that we need to use `js_name` to ensure we always call `log` in JS.
@@ -42,81 +57,53 @@ extern "C" {
 
   // Multiple arguments too!
   #[wasm_bindgen(js_namespace = console, js_name = log)]
-  // fn log_many(a: &str, b: &str);
-  fn log_many_strs(a: &str, b: &str);
+  fn log_strs(a: &str, b: &str);
 }
 
-// js_namespace = console, js_name = console_log ???
-// #[wasm_bindgen]
-// extern "C" {
-//   // Use `js_namespace` here to bind `console.log(..)` instead of just `log(..)`
-//   #[wasm_bindgen(js_namespace = console)]
-//   // fn log(s: &str);
-//   fn console_log(s: &str);
-
-//   // The `console.log` is quite polymorphic, so we can bind it with multiple signatures.
-//   // Note that we need to use `js_name` to ensure we always call `log` in JS.
-//   #[wasm_bindgen(js_namespace = console, js_name = log)]
-//   // fn log_u32(a: u32);
-//   fn console_log_u32(a: u32);
-
-//   // Multiple arguments too!
-//   #[wasm_bindgen(js_namespace = console, js_name = log)]
-//   // fn log_many(a: &str, b: &str);
-//   fn console_log_many_strs(a: &str, b: &str);
-// }
-
-// ❌  rust_to_wasm_npm.js:119 Uncaught (in promise) TypeError: `console.console_log` is not a function
-
-// 生成 JavaScript 可以调用的 Rust 函数
-// #[] => 属性, 修改下一条语句 fn; 即，这个 Rust 函数能够被 JavaScript 调用
-// public => pub
 #[wasm_bindgen]
 pub fn greet(name: &str) {
   // &format!， 字符串格式化，即字符串插值
-  // alert(&format!("Hello, {}!", name));
-  // console_log(&format!("Hello, {}!", name));
-  // console.log(&format!("Hello, {}!", name));
-  // console(&format!("Hello, {}!", name));
-  // const string: &str = &format!("Hello, {}!", name);
-
   let string: &str = &format!("Hello, {}!", name);
-  // `name` non-constant value ❌
-  log(string);
-  log_u32(2022);
-  let strings: &str = &format!("Hello, {}\nThis year is {}!", name, "2022");
-  log_many_strs(strings, "xgqfrms");
-  // console_log_many_strs(&format!("Hello, {}\nThis year is {}!", name, "2022"), "xgqfrms");
-
-  // let string: &str = &format!("Hello, {}!", name);
-  // // `name` non-constant value ❌
-  // console_log(string);
-  // console_log_u32(2022);
-  // let strings: &str = &format!("Hello, {}\nThis year is {}!", name, "2022");
-  // console_log_many_strs(strings, "xgqfrms");
-  // // console_log_many_strs(&format!("Hello, {}\nThis year is {}!", name, "2022"), "xgqfrms");
+  // log(string);
+  console_log("自定义 js name ✅ js_namespace 和 js_name 必须是 js 中真实存在的 ✅\n");
+  console_log(string);
 }
 
-// public => pub
-pub fn add(left: usize, right: usize) -> usize {
-  left + right
+#[wasm_bindgen]
+pub fn greet_u32(num: u32) {
+  // &format!， 字符串格式化，即字符串插值
+  log_u32(num);
 }
 
+// #[wasm_bindgen]
+// pub fn greet_u32(num: &u32) {
+//   // &format!， 字符串格式化，即字符串插值
+//   log_u32(num);
+// }
 
-// 测试代码
-// module => mod
 /*
 
-#[cfg(test)]
-mod tests {
-  use super::*;
+the trait `RefFromWasmAbi` is not implemented for `u32`
 
-  #[test]
-  fn it_works() {
-    let result = add(2, 2);
-    // 断言
-    assert_eq!(result, 4);
-  }
-}
+= help: the following other types implement trait `RefFromWasmAbi`:
+             JsValue
+             [f32]
+             [f64]
+             [i16]
+             [i32]
+             [i64]
+             [i8]
+             [isize]
+           and 6 others
+= note: this error originates in the attribute macro `wasm_bindgen` (in Nightly builds, run with -Z macro-backtrace for more info)
 
 */
+
+#[wasm_bindgen]
+pub fn greet_strs(str1: &str, str2: &str) {
+  // &format!， 字符串格式化，即字符串插值
+  let string1: &str = &format!("Hello, {}!", str1);
+  let string2: &str = &format!("\nThis year is {}!", str2);
+  log_strs(string1, string2);
+}
+

@@ -21,12 +21,25 @@
       <p>copyright&copy; xgqfrms 2022</p>
   </footer>
   <script type="module">
-    import init, { greet } from "./pkg/rust_to_wasm_npm.js";
+    import init, {
+      greet,
+      greet_u32,
+      greet_strs,
+    } from "./pkg/rust_to_wasm_npm.js";
     init().then(() => {
       // greet("Rust to WebAssembly and run wasm in js 🚀");
       console.log('greet =', greet);
-      greet("Rust to WebAssembly and run wasm in js 🚀");
-      // greet.log("Rust to WebAssembly and run wasm in js 🚀");
+      const str = "Rust to WebAssembly and run wasm in js 🚀";
+      const year = 2022;
+      greet(str);
+      if(greet_u32) {
+        console.log('greet_u32 =', greet_u32);
+        greet_u32(year);
+      }
+      if(greet_strs) {
+        console.log('greet_strs =', greet_strs);
+        greet_strs(str, `${year}`);
+      }
     });
   </script>
 </body>
