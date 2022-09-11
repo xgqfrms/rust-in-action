@@ -222,6 +222,8 @@ https://crates.io/crates/wasm-bindgen
 
 
 ```rs
+// ✅ Cargo.toml 中 dependencies 配置后，无需再次手动导入外部包 external crate
+
 // 导入外部包 external crate
 // extern crate wasm_bindgen;
 
@@ -249,6 +251,64 @@ greet("World!");
 
 ```
 
+
+```toml
+
+[dependencies]
+wasm-bindgen = "0.2.82"
+# 配置后，无需再次手动导入外部包 external crate
+# 即，可以省略 extern crate wasm_bindgen;
+
+[lib]
+crate-type = ["cdylib"]
+# tells Rust to build a `cdylib` version of our package ???
+
+```
+
+https://doc.rust-lang.org/cargo/guide/
+
+https://doc.rust-lang.org/reference/linkage.html
+
+`--crate-type=cdylib`, `#![crate_type = "cdylib"]`
+A dynamic system library will be produced. 
+This is used when compiling a dynamic library to be loaded from another language. 
+This output type will create `*.so` files on Linux, `*.dylib` files on macOS, and `*.dll` files on Windows.
+
+将生成一个动态系统库。
+这在编译要从另一种语言加载的动态库时使用。
+此输出类型将在 Linux 上创建 `*.so` 文件，在 macOS 上创建 `*.dylib` 文件，在 Windows 上创建 `*.dll` 文件。
+
+```sh
+# build the package
+$ wasm-pack build --target web
+
+# wasm32-unknown-unknown => 纯 WebAssembly 模块
+# rust-to-wasm-npm/target/wasm32-unknown-unknown/release/rust_to_wasm_npm.wasm
+
+# Your wasm pkg is ready to publish at /rust-to-wasm-npm/pkg
+
+```
+
+1. Compiles your `Rust` code to `WebAssembly`.
+2. Runs `wasm-bindgen` on that WebAssembly, generating a JavaScript file that `wraps up` that WebAssembly file `into a module` the browser can understand.
+3. Creates a `pkg` directory and moves that JavaScript file and your WebAssembly code into it.
+4. Reads your `Cargo.toml` and produces an equivalent `package.json`.
+5. Copies your `README.md` (if you have one) into the package.
+
+https://hacks.mozilla.org/2018/04/hello-wasm-pack/
+
+压缩包大小，优化
+
+https://rustwasm.github.io/book/game-of-life/code-size.html#shrinking-wasm-size
+
+```js
+  <script type="module">
+    import init, { greet } from "./pkg/rust_to_wasm_npm.js";
+    init().then(() => {
+      greet("WebAssembly");
+    });
+  </script>
+```
 
 > rustwasm
 

@@ -1,5 +1,7 @@
+// ✅ Cargo.toml 中 dependencies 配置后，无需再次手动导入外部包 external crate
+
 // 导入外部包 external crate
-extern crate wasm_bindgen;
+// extern crate wasm_bindgen;
 
 // 引入 wasm_bindgen::prelude 的全部模块 *
 use wasm_bindgen::prelude::*;
