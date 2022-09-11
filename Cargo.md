@@ -105,6 +105,8 @@ editor = "vscode"
 
 ## crates
 
+Rust 的 crate 包管理器; 类似 Node.js 的 npm 包管理器;
+
 > cowsay mascot
 
 https://crates.io/search?q=ferris-says
@@ -202,11 +204,50 @@ Caused by:
 # 要构建我们的包，我们需要一个额外工具 wasm-pack
 # 它会帮助我们把我们的代码编译成 WebAssembly 并制造出正确的 npm 包。
 $ cargo install wasm-pack
-# crates.io
+# Installed package `wasm-pack v0.10.3` (executable `wasm-pack`)
 
 ```
 
 https://developer.mozilla.org/zh-CN/docs/WebAssembly/Rust_to_wasm
+
+https://crates.io/
+
+https://crates.io/search?q=wasm-pack
+
+> Your favorite Rust → Wasm workflow tool!
+
+https://crates.io/crates/wasm-pack
+
+https://crates.io/crates/wasm-bindgen
+
+
+```rs
+// 导入外部包 external crate
+// extern crate wasm_bindgen;
+
+use wasm_bindgen::prelude::*;
+
+// Import the `window.alert` function from the Web.
+#[wasm_bindgen]
+extern "C" {
+  fn alert(s: &str);
+}
+
+// Export a `greet` function from Rust to JavaScript, that alerts a
+// hello message.
+#[wasm_bindgen]
+pub fn greet(name: &str) {
+  alert(&format!("Hello, {}!", name));
+}
+
+```
+
+```js
+import { greet } from "./hello_world";
+
+greet("World!");
+
+```
 
 
 > rustwasm
@@ -214,6 +255,14 @@ https://developer.mozilla.org/zh-CN/docs/WebAssembly/Rust_to_wasm
 ```sh
 # install wasm-pack
 $ curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+# or
+$ cargo install wasm-pack
+
+# or
+$ npm install -g wasm-pack
+# or
+$ yarn global add wasm-pack
 
 ```
 

@@ -1,0 +1,22 @@
+[package]
+name = "rust-to-wasm-npm"
+version = "0.0.1"
+edition = "2021"
+
+authors = ["xgqfrms <xgqfrms@xgqfrms.xyz>"]
+description = "A sample project with wasm-pack"
+license = "MIT"
+# license = "MIT/Apache-2.0"
+# license = "MIT OR Apache-2.0"
+repository = "https://github.com/xgqfrms/rust-to-wasm-npm"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+wasm-bindgen = "0.2.82"
+# 配置后，无需再次手动导入外部包 external crate
+# 即，可以省略 extern crate wasm_bindgen;
+
+[lib]
+crate-type = ["cdylib"]
+# tells Rust to build a `cdylib` version of our package ???
