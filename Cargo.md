@@ -193,6 +193,23 @@ Caused by:
 
 ## wasm-pack
 
+```sh
+# install wasm-pack
+$ curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+#or 
+$ cargo install wasm-pack
+#or 
+$ npm install -g wasm-pack
+#or 
+$ yarn global add wasm-pack
+
+```
+
+
+https://rustwasm.github.io/wasm-pack/installer/
+
+
 > MDN
 
 使用 Rust 的 npm 包构建工具 wasm-pack 来构建一个 npm 包;
