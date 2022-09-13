@@ -11,11 +11,3 @@ Cargo.lock
 
 # ignore target
 **/**/target/
-
-
-# /target
-# **/*.rs.bk
-# Cargo.lock
-# bin/
-# pkg/
-# wasm-pack.log
