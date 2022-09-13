@@ -1,86 +1,72 @@
-<div align="center">
+# wasm-pack-demo
 
-  <h1><code>wasm-pack-template</code></h1>
+```sh
+# new, create a new project with a template
+$ wasm-pack new
+$ wasm-pack new -h
+# wasm-pack new <name> --mode <mode> --template <template>
 
-  <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
-
-  <p>
-    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square" alt="Build Status" /></a>
-  </p>
-
-  <h3>
-    <a href="https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html">Tutorial</a>
-    <span> | </span>
-    <a href="https://discordapp.com/channels/442252698964721669/443151097398296587">Chat</a>
-  </h3>
-
-  <sub>Built with 🦀🕸 by <a href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a></sub>
-</div>
-
-## About
-
-[**📚 Read this template tutorial! 📚**][template-docs]
-
-This template is designed for compiling Rust libraries into WebAssembly and
-publishing the resulting package to NPM.
-
-Be sure to check out [other `wasm-pack` tutorials online][tutorials] for other
-templates and usages of `wasm-pack`.
-
-[tutorials]: https://rustwasm.github.io/docs/wasm-pack/tutorials/index.html
-[template-docs]: https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html
-
-## 🚴 Usage
-
-### 🐑 Use `cargo generate` to Clone this Template
-
-[Learn more about `cargo generate` here.](https://github.com/ashleygwilliams/cargo-generate)
-
-```
-cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
-cd my-project
+# build, build your npm package!
+$ wasm-pack build
+$ wasm-pack build -h
 ```
 
-### 🛠️ Build with `wasm-pack build`
+```sh
+# create a new project template
+$ wasm-pack new wasm-pack-demo
 
-```
-wasm-pack build
-```
+# create a release build. Enable optimizations and disable debug info 🚀
+$ cd wasm-pack-demo && wasm-pack build --release
 
-### 🔬 Test in Headless Browsers with `wasm-pack test`
-
-```
-wasm-pack test --headless --firefox
-```
-
-### 🎁 Publish to NPM with `wasm-pack publish`
-
-```
-wasm-pack publish
+# 查看 npm package
+$ ls pkg
 ```
 
-## 🔋 Batteries Included
 
-* [`wasm-bindgen`](https://github.com/rustwasm/wasm-bindgen) for communicating
-  between WebAssembly and JavaScript.
-* [`console_error_panic_hook`](https://github.com/rustwasm/console_error_panic_hook)
-  for logging panic messages to the developer console.
-* [`wee_alloc`](https://github.com/rustwasm/wee_alloc), an allocator optimized
-  for small code size.
-* `LICENSE-APACHE` and `LICENSE-MIT`: most Rust projects are licensed this way, so these are included for you
+## Cargo.toml
 
-## License
+```toml
+# 配置 npm package 的信息
+[package]
+name = "wasm-pack-demo"
+version = "0.0.1"
+authors = ["xgqfrms <xgqfrms@outlook.com>"]
+description = "wasm-pack-demo, with rust, wasm-pack, npm 🦀 📦 🚀"
+repository = "https://github.com/xgqfrms/rust-in-action"
+license = "MIT"
 
-Licensed under either of
+# Rust / WebAssembly ??? version
+edition = "2021"
+# custom config ✅
+author = "xgqfrms"
+editor = "vscode"
 
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+```
 
-at your option.
+> `package.json`
 
-### Contribution
+```json
+{
+  "name": "wasm-pack-demo",
+  "collaborators": [
+    "xgqfrms <xgqfrms@outlook.com>"
+  ],
+  "description": "wasm-pack-demo, with rust, wasm-pack, npm 🦀 📦 🚀",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xgqfrms/rust-in-action"
+  },
+  "files": [
+    "wasm_pack_demo_bg.wasm",
+    "wasm_pack_demo.js",
+    "wasm_pack_demo_bg.js",
+    "wasm_pack_demo.d.ts"
+  ],
+  "module": "wasm_pack_demo.js",
+  "types": "wasm_pack_demo.d.ts",
+  "sideEffects": false
+}
 
-Unless you explicitly state otherwise, any contribution intentionally
-submitted for inclusion in the work by you, as defined in the Apache-2.0
-license, shall be dual licensed as above, without any additional terms or
-conditions.
+```

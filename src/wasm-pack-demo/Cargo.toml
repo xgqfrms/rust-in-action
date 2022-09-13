@@ -1,8 +1,15 @@
 [package]
 name = "wasm-pack-demo"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["xgqfrms <xgqfrms@outlook.com>"]
-edition = "2018"
+edition = "2021"
+description = "wasm-pack-demo, with rust, wasm-pack, npm 🦀 📦 🚀"
+repository = "https://github.com/xgqfrms/rust-in-action"
+license = "MIT"
+
+# custom config ✅
+author = "xgqfrms"
+editor = "vscode"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

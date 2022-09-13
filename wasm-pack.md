@@ -143,7 +143,8 @@ $ wasm-pack new wasm-pack-demo
 $ wasm-pack build
 # create a release build. Enable optimizations and disable debug info 🚀
 $ cd wasm-pack-demo && wasm-pack build --release
-
+# 查看 npm package
+$ ls pkg
 
 # publish, pack up your npm package and publish!
 $ wasm-pack publish
