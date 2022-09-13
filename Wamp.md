@@ -1,14 +1,15 @@
 ## WAPM
 
+
+`WAPM` is a product of `Wasmer`, the WebAssembly runtime.
+
+只要安装上 `Wasmer`， 就自带 `wapm` 了 ✅
+
+https://www.cnblogs.com/xgqfrms/p/16689037.html
+
+## wapm
+
 > WebAssembly Package Manager
-
-```sh
-# install package
-$ wapm install cowsay
-
-$ wapm run cowsay Hello World 2022!
-
-```
 
 WebAssembly apps and libraries
 
@@ -49,3 +50,34 @@ SUBCOMMANDS:
 
 ```
 
+
+## MDN
+
+
+https://developer.mozilla.org/zh-CN/docs/WebAssembly/Rust_to_wasm
+
+## demos
+
+/src/rust-to-wasm-npm
+
+```sh
+# install package
+$ wapm install cowsay
+
+# test
+$ wapm run cowsay Hello World!
+$ wapm run cowsay Hello World2!
+
+$ wapm run cowsay Hello World 2022!
+
+```
+
+https://wapm.io/syrusakbary/cowsay
+
+
+
+```sh
+# Prints the current user (if authed) in the stdout
+$ wapm whoami
+(not logged in)
+```

@@ -1,13 +1,16 @@
 # Wasmer All In One
 
 
-
-
-https://wasmer.io/
+https://wasmer.io
 
 https://www.cnblogs.com/xgqfrms/p/16683271.html
 
-> Wasmer runtime /  wasmer 虚拟机
+只要安装上 `Wasmer`， 就自带 `wapm` 了 ✅
+
+https://www.cnblogs.com/xgqfrms/p/16689037.html
+
+
+> WebAssembly runtime /  WebAssembly 虚拟机
 
 ```sh
 $ curl https://get.wasmer.io -sSfL | sh
