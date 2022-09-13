@@ -174,3 +174,26 @@ https://rustwasm.github.io/docs/wasm-pack/
 
 https://rustwasm.github.io/wasm-pack/book/
 
+
+```md
+# `wasm-pack` Quickstart
+
+Install rust using rustup.
+<!-- bash -->
+Install this tool.
+<!-- bash -->
+
+Run `wasm-pack new hello-wasm`.
+
+cd hello-wasm
+Run `wasm-pack build`.
+This tool generates files in a `pkg` dir
+
+To publish to npm, `run wasm-pack publish`. 
+You may need to login to the registry you want to publish to. 
+You can login using `wasm-pack login`.
+
+```
+
+https://rustwasm.github.io/docs/wasm-pack/quickstart.html
+

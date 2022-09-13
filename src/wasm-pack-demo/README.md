@@ -70,3 +70,39 @@ editor = "vscode"
 }
 
 ```
+
+
+## `wasm-pack` custom template
+
+```sh
+# wasm-pack new <name> --mode <mode> --template <template>
+
+# default template
+$ wasm-pack new wasm-pack-default-template
+$ wasm-pack new wasm-pack-default-template --template https://github.com/rustwasm/wasm-pack-template
+
+# custom template
+$ wasm-pack new wasm-pack-custom-template --template https://github.com/xgqfrms/wasm-pack-template
+# $ wasm-pack new wasm-pack-custom-template --mode normal --template https://github.com/xgqfrms/wasm-pack-template
+
+```
+
+https://github.com/xgqfrms/wasm-pack-template
+
+https://github.com/rustwasm/wasm-pack-template
+
+
+### `cargo generate`
+
+https://github.com/ashleygwilliams/cargo-generate
+
+```sh
+$ cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
+
+$ cd my-project && wasm-pack build
+
+$ wasm-pack test --headless --firefox
+
+$ wasm-pack publish
+
+```
