@@ -15,3 +15,4 @@ $ rustc ./print.rs && ./print
 
 // ??? Rust print! 这么多输出一个 %
 */
+
