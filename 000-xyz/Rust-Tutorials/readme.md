@@ -75,3 +75,59 @@ a = 456;
 
 使变量变得"可变"（mutable）只需一个 mut 关键字。
 
+常量是不可变的
+
+变量的值可以"重新绑定"，但在"重新绑定"以前不能私自被改变，这样可以确保在每一次"绑定"之后的区域里编译器可以充分的推理程序逻辑。
+
+虽然 Rust 有自动判断类型的功能，但有些情况下声明类型更加方便：
+
+声明了 a 为无符号 64 位整型变量，如果没有声明类型，a 将自动被判断为有符号 32 位整型变量
+
+
+重影（Shadowing）
+重影的概念与其他面向对象语言里的"重写"（Override）或"重载"（Overload）是不一样的。
+
+重影就是刚才讲述的所谓"重新绑定"，之所以加引号就是为了在没有介绍这个概念的时候代替一下概念。
+
+重影就是指变量的名称可以被重新使用的机制：
+
+```rs
+
+fn main () {
+  println!("🦀 shadowing 重影，let 重新声明");
+  // 变量
+  let x = 5;
+  let x = x + 1;
+  let x = x * 2;
+  println!("\nvalue = {}", x);
+  // value = 12
+}
+
+```
+
+重影与可变变量的赋值不是一个概念，
+重影是指用同一个名字重新代表另一个变量实体，其`类型`、`可变属性`和`值`都可以变化。
+但`可变变量赋值`仅能发生`值`的变化。
+
+```rs
+
+fn main () {
+  println!("🦀 shadowing 重影，let 重新声明");
+  // 变量重影
+  let shadowing = 1;
+  // let shadowing = shadowing + "2";
+  let shadowing = &format!("shadowing is equal to {}", shadowing);
+  println!("\shadowing = {}", shadowing);
+  // 
+  // 可变变量赋值
+  let mut str = "123";
+  // str = str.len();
+  str = "2022";
+  println!("\nstring = {}", str);
+}
+
+```
+
+这段程序会出错：不能给字符串变量赋整型值。
+
+
